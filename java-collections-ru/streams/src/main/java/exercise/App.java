@@ -7,9 +7,9 @@ import java.util.Arrays;
 public class App {
     public static long getCountOfFreeEmails(List<String> emails) {
         return emails.stream()
-                .filter(email -> email.endsWith("gmail.com"))
-                .filter(email -> email.endsWith("yandex.ru"))
-                .filter(email -> email.endsWith("hotmail.com"))
+                .filter(email -> email.endsWith("gmail.com")
+                        || email.endsWith("yandex.ru")
+                        || email.endsWith("hotmail.com"))
                 .count();
     }
 }
