@@ -14,6 +14,7 @@ public class Address {
 
     // BEGIN
     @NotNull
+    @MinLength
     // END
     private String street;
 

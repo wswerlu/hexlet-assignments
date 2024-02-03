@@ -31,12 +31,12 @@ class ValidationTest {
     @Test
     void testAdvancedValidate() throws IllegalAccessException{
         Address address = new Address("USA", "Texas", null, "7", "2");
-        Map<String, List<String>> result1 = Validator.advancedValidate(address);
-        Map<String, List<String>> expected1 = Map.of(
+        Map<String, List<String>> result = Validator.advancedValidate(address);
+        Map<String, List<String>> expected = Map.of(
                 "country", List.of("length less than 4"),
-                "street", List.of("can not be null")
+                "street", List.of("can not be null", "length less than 3")
         );
-        assertThat(result1).isEqualTo(expected1);
+        assertThat(result).isEqualTo(expected);
     }
     // END
 }
