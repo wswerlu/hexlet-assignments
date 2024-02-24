@@ -28,6 +28,8 @@ import jakarta.validation.Valid;
 public class TasksController {
     // BEGIN
 
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private TaskRepository taskRepository;
@@ -65,8 +67,11 @@ public class TasksController {
     public TaskDTO update(@PathVariable long id, @RequestBody TaskUpdateDTO taskData) {
         var task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found"));
+        var user =  userRepository.findById(taskData.getAssigneeId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         taskMapper.update(taskData, task);
+        task.setAssignee(user);
         taskRepository.save(task);
 
         return taskMapper.map(task);

@@ -122,7 +122,7 @@ class TasksControllerTest {
 
         dto.setTitle("new title");
         dto.setDescription("new description");
-//        dto.setAssigneeId(anotherUser.getId());
+        dto.setAssigneeId(anotherUser.getId());
 
         var request = put("/tasks/{id}", testTask.getId())
                 .contentType(MediaType.APPLICATION_JSON)
