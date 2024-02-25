@@ -98,13 +98,13 @@ class UsersControllerTest {
         assertThat(user.getPasswordDigest()).isNotEqualTo(testUser.getPasswordDigest());
     }
 
-//    @Test
-//    public void testIndexWithoutAuth() throws Exception {
-//        userRepository.save(testUser);
-//        var result = mockMvc.perform(get("/users"))
-//                .andExpect(status().isUnauthorized());
-//
-//    }
+    @Test
+    public void testIndexWithoutAuth() throws Exception {
+        userRepository.save(testUser);
+        var result = mockMvc.perform(get("/users"))
+                .andExpect(status().isUnauthorized());
+
+    }
 
     @Test
     public void testShowWithoutAuth() throws Exception {
